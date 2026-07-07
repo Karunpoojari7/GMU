@@ -1,0 +1,45 @@
+
+# =====================================
+# JWT CONFIGURATION
+# =====================================
+jwt:
+  secret: qwertyuiopasfhjvsahjdsvfdvnjkndfkjvjdkfnvklnklfdvkjndfkjvnjkdnfjkvnkldfnvklndklfnvkldfnvklndklfnvdf
+  access:
+    expiration: 900000     # 15 min
+  internal:
+    expiration: 300000     # 5 min
+
+# =====================================
+# SECURITY & PUBLIC ROUTES
+# =====================================
+security:
+  publicEndpoints:
+    - /api/auth/login
+    - /api/auth/refresh
+    - /api/auth/logout
+    # - /api/leads/** <-- Uncomment this line ONLY if you need to test the connection without a token again
+
+# =====================================
+# GATEWAY ROUTING
+# =====================================
+spring:
+  cloud:
+    gateway:
+      routes:
+        
+        # ==========================
+        # AUTH SERVICE
+        # ==========================
+        - id: auth-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/auth/**
+
+        # ==========================
+        # LEAD SERVICE
+        # ==========================
+        - id: lead-service
+          uri: http://192.168.1.13:8089
+          predicates:
+            - Path=/api/leads/**
+        
