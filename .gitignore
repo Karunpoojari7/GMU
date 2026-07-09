@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 /.metadata/
+=======
+﻿node_modules/
+**/node_modules/
+.next/
+>>>>>>> a9366e5417d4063982aefbeca309905f6682422a
