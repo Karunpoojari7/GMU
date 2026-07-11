@@ -16,9 +16,9 @@ jwt:
 
 security:
   publicEndpoints:
-    - /api/auth/login
-    - /api/auth/refresh
-    - /api/auth/logout
+    - /api/leads/auth/login
+    - /api/leads/auth/refresh
+    - /api/leads/auth/logout
     - /api/leads/health/info
 
 # =====================================
@@ -51,7 +51,7 @@ spring:
 
             - id: lead-service
 
-              uri: http://192.168.1.13:8089
+              uri: http://192.168.1.13:8089      
 
               predicates:
                 - Path=/api/leads/**
